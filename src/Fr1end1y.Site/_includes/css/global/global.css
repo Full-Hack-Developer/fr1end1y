@@ -1,0 +1,359 @@
+/**
+ * Low-specificity, global styles that apply to the whole project
+ * https://cube.fyi/css.html
+ *
+ * Much of this comes from Andy Bell's Complete CSS course which I highly
+ * recommend buying: https://piccalil.li/complete-css/
+ */
+
+body {
+	background-color: var(--color-light);
+	background-image: var(--body-background-image);
+	color: var(--color-dark);
+	font-family: var(--font-base);
+	font-size: var(--step-1);
+	font-size-adjust: from-font;
+	line-height: var(--leading-standard);
+	margin: 0;
+}
+
+:is(h1, h2, h3, h4, h5, h6) {
+	font-family: var(--font-decorative);
+	font-weight: var(--font-normal);
+	max-width: 60ch;
+}
+
+:is(h1, h2, h3, h4) {
+	line-height: var(--leading-fine);
+	text-wrap: balance;
+}
+
+h1 {
+	font-size: var(--step-5);
+}
+
+h2 {
+	font-size: var(--step-4);
+}
+
+h3 {
+	font-size: var(--step-3);
+}
+
+:is(h4, h5, h6) {
+	font-size: var(--step-2);
+}
+
+small {
+	font-size: var(--step-0);
+}
+
+ins {
+	background: var(--color-dark);
+	color: var(--color-light);
+	padding-inline: 0.3em;
+	text-decoration: none;
+}
+
+:is(code, kbd, samp) {
+	background-color: var(--color-light-shade);
+	box-decoration-break: clone;
+	font-family: var(--font-mono);
+	hyphens: none;
+	padding: 0.2em 0.2em 0.05em 0.2em;
+	tab-size: 2;
+	text-align: left;
+	word-break: normal;
+	word-spacing: normal;
+	word-wrap: normal;
+}
+
+@supports not (font-size-adjust: from-font) {
+	:is(code, kbd, samp) {
+		font-size: 0.8em;
+	}
+}
+
+pre {
+	background-color: var(--color-light-shade);
+	border: 3px solid var(--color-dark);
+	border-radius: var(--radius-s);
+	box-shadow: 0.1rem 0.1rem 0 var(--color-dark-glare);
+	font-size: var(--step-1);
+	overflow-x: auto;
+	padding: var(--space-2xs);
+}
+
+pre code {
+	background: none;
+	border: none;
+	padding: 0;
+}
+
+kbd {
+	border: 1px solid;
+	padding-block-end: 0.1em;
+}
+
+var {
+	font-style: normal;
+	font-weight: var(--font-bold);
+}
+
+q {
+	font-style: italic;
+}
+
+ul:not([class]) {
+	padding-inline-start: 2.3ch;
+}
+
+ul:not([class]) > li {
+	padding-inline-start: var(--space-3xs);
+}
+
+ul ::marker {
+	font-size: 0.75lh;
+}
+
+ol ::marker {
+	font-size: 1em;
+	font-weight: var(--font-bold);
+}
+
+[role="list"][class],
+[role="tablist"][class] {
+	margin-block: 0;
+	padding: 0;
+}
+
+dt {
+	font-weight: var(--font-bold);
+}
+
+dt + dd {
+	margin-block-start: var(--space-xs);
+}
+
+dd + dt {
+	margin-block-start: var(--space-s);
+}
+
+dd {
+	margin-inline-start: 1.5ch;
+}
+
+blockquote {
+	border-inline-start: var(--stroke);
+	color: var(--color-dark-glare);
+	font-style: italic;
+	margin-inline: 0;
+	padding-inline: var(--space-xs);
+}
+
+blockquote footer {
+	color: var(--color-dark);
+	font-size: var(--step-0);
+	font-style: normal;
+	margin-block-start: var(--space-s);
+}
+
+:is(video, iframe[src*="youtube"], iframe[src*="vimeo"]) {
+	aspect-ratio: 16/9;
+	display: block;
+	height: auto;
+	width: 100%;
+}
+
+img {
+	display: block;
+	height: auto;
+	max-width: 100%;
+}
+
+/* Bit of a hack to allow editors to align images in the Umbraco richtext editor */
+p[style] img {
+	display: unset;
+}
+
+figcaption {
+	font-family: var(--font-mono);
+	font-size: var(--step--1);
+	padding-block-start: 0.5em;
+}
+
+table {
+	background-color: var(--color-light);
+	border: var(--stroke);
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th {
+	font-weight: var(--font-bold);
+	line-height: var(--leading-fine);
+	text-align: left;
+}
+
+thead th {
+	padding-block: var(--space-s);
+}
+
+td,
+th {
+	padding: var(--space-xs) var(--space-s);
+}
+
+th:not(:only-of-type) {
+	border-block-end: var(--stroke);
+}
+
+th:only-of-type {
+	border-inline-end: var(--stroke);
+}
+
+:is(th, td) ~ :is(th, td) {
+	border-inline-start: var(--stroke);
+}
+
+tr + tr :is(th, td) {
+	border-block-start: var(--stroke);
+}
+
+caption {
+	caption-side: bottom;
+	margin-block-start: var(--space-s);
+}
+
+a {
+	color: var(--color-accent);
+}
+
+a[target="_blank"]::after {
+	content: "↗";
+	font-size: 0.8em;
+}
+
+:is(h1, h2, h3, h4) a:not([class]) {
+	text-decoration-thickness: 0.1ex;
+	text-underline-offset: 0.2ex;
+}
+
+:focus {
+	outline: none;
+}
+
+:focus-visible {
+	outline: 2px solid var(--focus-color, currentColor);
+	outline-offset: var(--focus-offset, 0.2lh);
+}
+
+@supports (-moz-appearance: none) {
+	:root {
+		--focus-offset: 0.08em;
+	}
+}
+
+:target {
+	scroll-margin-block: var(--space-s);
+}
+
+::selection {
+	color: var(--color-light);
+	background: var(--color-dark);
+}
+
+hr {
+	border: none;
+	border-block-start: var(--stroke);
+	margin-block: var(--flow-space, var(--space-xl));
+}
+
+svg:not([class]) {
+	height: 1lh;
+	width: auto;
+}
+
+svg {
+	flex-shrink: 0;
+}
+
+svg[role="img"][width][height] {
+	height: revert;
+	padding: var(--space-xs);
+	width: revert;
+}
+
+form > * + * {
+	margin-top: var(--flow-space, 1rem);
+}
+
+:is(input, select, textarea) {
+	accent-color: var(--color-accent);
+}
+
+:is(
+	input:not([type="checkbox"], [type="radio"], [type="color"]),
+	select,
+	textarea
+) {
+	background: var(--color-light);
+	border: var(--stroke-solid);
+	border-radius: var(--radius-s);
+	color: var(--color-dark);
+	padding: 0.5em 0.8em;
+	width: 100%;
+}
+
+label {
+	line-height: var(--leading-standard);
+	font-weight: var(--font-bold);
+}
+
+label::after {
+	content: "\A";
+	white-space: pre;
+}
+
+label:has(input) {
+	align-items: baseline;
+	display: flex;
+	font-weight: var(--font-normal);
+	gap: var(--space-s);
+}
+
+label:has(input) + label:has(input) {
+	--flow-space: var(--space-s-m);
+}
+
+label:has(input) input {
+	transform: translateY(-0.1ex);
+}
+
+input:disabled {
+	background: var(--color-light-shade);
+}
+
+input:disabled,
+label input:disabled + * {
+	cursor: not-allowed;
+}
+
+fieldset {
+	border: var(--stroke);
+	padding: var(--space-s);
+}
+
+legend {
+	font-weight: var(--font-bold);
+	padding-inline: var(--space-xs);
+}
+
+summary {
+	cursor: pointer;
+	font-weight: var(--font-bold);
+}
+
+details[open] summary {
+	margin-block-end: var(--space-s);
+}

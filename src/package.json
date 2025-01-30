@@ -1,0 +1,20 @@
+{
+	"name": "fr1end1y",
+	"version": "0.1.0",
+	"scripts": {
+		"build-cms": "cd ./Fr1end1y.Cms/ && dotnet build",
+		"build-site": "cd ./Fr1end1y.Site/ && npm run build-site",
+		"clean-cms": "cd ./Fr1end1y.Cms/ && dotnet clean",
+		"clean-site": "cd ./Fr1end1y.Site/ && npm run clean-site",
+		"clean": "npm run clean-cms && npm run clean-site",
+		"dev-cms": "cd ./Fr1end1y.Cms/ && dotnet run",
+		"dev-site": "wait-on tcp:1111 && cd ./Fr1end1y.Site/ && npm run dev-site",
+		"dev": "concurrently --names cms,site 'npm:dev-cms' 'npm:dev-site'",
+		"openapi-gen": "cd ./Fr1end1y.Site/ && npm run openapi-gen",
+		"postinstall": "cd ./Fr1end1y.Site/ && npm install"
+	},
+	"devDependencies": {
+		"concurrently": "^9.1.2",
+		"wait-on": "^8.0.2"
+	}
+}

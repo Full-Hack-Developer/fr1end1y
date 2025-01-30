@@ -1,0 +1,5 @@
+{% if umbraco.settings.footerContent.markup %}
+	<footer class="flow site-footer">
+		{{ umbraco.settings.footerContent.markup | sanitize | richText | safe }}
+	</footer>
+{% endif %}

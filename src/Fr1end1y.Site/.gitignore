@@ -1,0 +1,6 @@
+_site/
+.cache/
+node_modules/
+api/delivery/*.ts
+*.log
+.env

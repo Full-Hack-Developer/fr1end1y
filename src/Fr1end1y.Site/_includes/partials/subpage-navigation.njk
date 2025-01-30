@@ -1,0 +1,23 @@
+{# Recursive macro to render nested lists of links #}
+{% macro subpageNavigationList(items) %}
+	{% if items.length > 0 %}
+		<ul>
+			{% for item in items %}
+				<li>
+					<a href="{{ item.url }}">
+						{{ item.title }}
+					</a>
+					{% if item.children %}
+						{{ subpageNavigationList(item.children) }}
+					{% endif %}
+				</li>
+			{% endfor %}
+		</ul>
+	{% endif %}
+{% endmacro %}
+
+{% if subpageNavigationItems.length > 0 %}
+	<nav aria-label="Subpages">
+		{{ subpageNavigationList(subpageNavigationItems) }}
+	</nav>
+{% endif %}

@@ -1,0 +1,16 @@
+/**
+ * Repel composition from Andy Bell's Complete CSS course
+ * https://piccalil.li/complete-css/
+ */
+
+.repel {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: var(--repel-vertical-alignment, center);
+	gap: var(--gutter, var(--space-m));
+}
+
+.repel[data-nowrap] {
+	flex-wrap: nowrap;
+}

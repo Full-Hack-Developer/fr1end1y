@@ -1,0 +1,10 @@
+{
+	"recommendations": [
+		"editorconfig.editorconfig",
+		"esbenp.prettier-vscode",
+		"dbaeumer.vscode-eslint",
+		"davidanson.vscode-markdownlint",
+		"ms-dotnettools.csdevkit",
+		"ronnidc.nunjucks"
+	]
+}

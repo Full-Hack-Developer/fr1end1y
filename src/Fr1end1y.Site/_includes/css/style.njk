@@ -1,0 +1,34 @@
+{##
+ # Inlined critical CSS using the Eleventy Bundle plugin
+ # https://www.11ty.dev/docs/plugins/bundle/
+ #}
+
+{% css %}
+	{##
+	 # Add your own critical CSS files here, or use the `css` shortcode in
+	 # other templates/partials to add to the bundle. See the Eleventy Bundle
+	 # docs for guidance on implementing deferred styles.
+	 # https://www.11ty.dev/docs/plugins/bundle/#critical-css
+	 #}
+	{% include "css/global/reset.css" %}
+	{% include "css/global/fonts.css" %}
+	{% include "css/global/scales.css" %}
+	{% include "css/global/variables.css" %}
+	{% include "css/global/global.css" %}
+
+	{% include "css/compositions/cluster.css" %}
+	{% include "css/compositions/cover.css" %}
+	{% include "css/compositions/flow.css" %}
+	{% include "css/compositions/repel.css" %}
+	{% include "css/compositions/wrapper.css" %}
+
+	{% include "css/utilities/visually-hidden.css" %}
+
+	{% include "css/blocks/site-header.css" %}
+	{% include "css/blocks/site-footer.css" %}
+	{% include "css/blocks/prose.css" %}
+	{% include "css/blocks/skip-link.css" %}
+	{% include "css/blocks/table-of-contents.css" %}
+{% endcss %}
+
+<style>{% getBundle "css" %}</style>

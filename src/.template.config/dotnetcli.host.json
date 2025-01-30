@@ -1,0 +1,25 @@
+{
+	"$schema": "https://json.schemastore.org/dotnetcli.host.json",
+	"symbolInfo": {
+		"SkipRestore": {
+			"longName": "no-restore",
+			"shortName": ""
+		},
+		"DevelopmentDatabaseType": {
+			"longName": "development-database-type",
+			"shortName": ""
+		},
+		"UnattendedUserName": {
+			"longName": "friendly-name",
+			"shortName": ""
+		},
+		"UnattendedUserEmail": {
+			"longName": "email",
+			"shortName": ""
+		},
+		"UnattendedUserPassword": {
+			"longName": "password",
+			"shortName": ""
+		}
+	}
+}

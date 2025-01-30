@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="{{ env.siteLanguage }}">
+	<head>
+		<meta charset="utf-8">
+		<title>
+			{{ (currentPage.properties.metaTitle or currentPage.name) + (" | " + umbraco.settings.siteTitle if umbraco.settings.siteTitle else "") }}
+		</title>
+		<meta name="description" content="{{ currentPage.properties.metaDescription }}">
+		<meta name="generator" content="{{ eleventy.generator }}">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		{% if umbraco.settings.favicon %}
+			{# https://css-tricks.com/emoji-as-a-favicon/ #}
+			<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22%3E%3Ctext%20y=%22.9em%22%20font-size=%2280%22%3E{{ umbraco.settings.favicon }}%3C/text%3E%3C/svg%3E">
+		{% endif %}
+		{% include "css/style.njk" %}
+	</head>
+	<body>
+		<a href="#main" class="skip-link">Skip to main content</a>
+		<div class="wrapper">
+			{# Home page uses the `cover` layout composition, anything else is considered `flow` content #}
+			<div class="{% if currentPage.contentType == 'homePage' %}cover{% else %}flow{% endif %}">
+				{% include "partials/site-header.njk" %}
+				<main id="main">
+					{{ content | safe }}
+				</main>
+				{% include "partials/site-footer.njk" %}
+			</div>
+		</div>
+	</body>
+</html>

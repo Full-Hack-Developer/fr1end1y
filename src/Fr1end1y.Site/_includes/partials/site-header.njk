@@ -1,0 +1,29 @@
+<header class="repel site-header">
+	<a href="/" class="site-header__brand">
+		{{ umbraco.settings.brand or umbraco.settings.siteTitle }}
+	</a>
+	{% if umbraco.settings.mainNavigationLinks.length > 0 %}
+		<nav aria-label="Primary">
+			<ul class="cluster" role="list">
+				{% for link in umbraco.settings.mainNavigationLinks %}
+					<li>
+						<a
+							href="{{ (link.url or link.route.path) + (link.queryString or '') }}"
+
+							{% if link.target %}
+								target="{{ link.target }}"
+							{% endif %}
+
+							{# Set `aria-current` attribute if the link URL matches the current page URL #}
+							{% if link.route.path === currentPage.route.path %}
+								aria-current="page"
+							{% endif %}
+						>
+							{{ link.title }}
+						</a>
+					</li>
+				{% endfor %}
+			</ul>
+		</nav>
+	{% endif %}
+</header>

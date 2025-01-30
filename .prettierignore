@@ -1,0 +1,7 @@
+src/Fr1end1y.Cms/appsettings-schema.json
+src/Fr1end1y.Cms/appsettings-schema.*.json
+src/Fr1end1y.Cms/umbraco-package-schema.json
+src/Fr1end1y.Site/_site/
+src/Fr1end1y.Site/.cache/
+src/Fr1end1y.Site/api/delivery/*.ts
+src/Fr1end1y.Site/api/delivery/*.gen.js

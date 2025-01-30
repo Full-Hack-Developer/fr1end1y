@@ -1,0 +1,23 @@
+.skip-link:not(:focus-visible) {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 0;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	white-space: nowrap;
+}
+
+.skip-link:focus-visible {
+	background-color: var(--color-light);
+	color: var(--color-dark);
+	font-size: var(--step-0);
+	outline-offset: 0;
+	padding: 0.25em;
+	position: absolute;
+	top: 0.25em;
+	left: 0.25em;
+	z-index: 666;
+}

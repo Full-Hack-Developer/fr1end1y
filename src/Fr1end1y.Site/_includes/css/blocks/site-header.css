@@ -1,0 +1,14 @@
+.site-header {
+	border-block-end: var(--stroke);
+	font-family: var(--font-decorative);
+	font-size: var(--step-2);
+	line-height: var(--leading-fine);
+	padding-block-start: var(--space-xs);
+	padding-block-end: var(--space-xs);
+}
+
+.site-header__brand {
+	color: var(--color-dark);
+	font-size: var(--step-4);
+	text-decoration: none;
+}

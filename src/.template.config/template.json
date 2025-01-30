@@ -1,0 +1,181 @@
+{
+	"$schema": "http://json.schemastore.org/template",
+	"author": "Steven Harland",
+	"identity": "Umbraco.Community.Templates.Fr1end1y",
+	"name": "fr1end1y starter kit",
+	"shortName": "fr1end1y",
+	"sourceName": "Fr1end1y",
+	"guids": ["f0f9ac64-cfb3-4c36-92eb-b1ac683e9252"],
+	"preferNameDirectory": true,
+	"classifications": ["Web", "CMS", "Umbraco", "Eleventy"],
+	"tags": {
+		"language": "C#",
+		"type": "solution"
+	},
+	"sources": [
+		{
+			"modifiers": [
+				{
+					"exclude": [
+						"**/node_modules/**",
+						"Fr1end1y.Cms/umbraco/**",
+						"Fr1end1y.Site/_site/**",
+						"Fr1end1y.Site/.cache/**"
+					],
+					"copyOnly": ["README.md", "Fr1end1y.Cms/uSync/**"]
+				}
+			]
+		}
+	],
+	"primaryOutputs": [
+		{
+			"path": "Fr1end1y.Cms/Fr1end1y.Cms.csproj"
+		}
+	],
+	"postActions": [
+		{
+			"actionId": "210D431B-A78B-4D2F-B762-4ED3E3EA9025",
+			"description": "Restore required NuGet packages.",
+			"condition": "(!SkipRestore)",
+			"manualInstructions": [
+				{
+					"text": "Run `dotnet restore`"
+				}
+			],
+			"continueOnError": true
+		},
+		{
+			"actionId": "3A7C4B45-1F5D-4A30-959A-51B88E82B5D2",
+			"description ": "Restore required Node.js packages.",
+			"condition": "(!SkipRestore)",
+			"args": {
+				"executable": "npm",
+				"args": "install",
+				"redirectStandardOutput": false,
+				"redirectStandardError": false
+			},
+			"manualInstructions": [
+				{
+					"text": "Run `npm install`"
+				}
+			],
+			"continueOnError": true
+		}
+	],
+	"symbols": {
+		"DevelopmentDatabaseType": {
+			"displayName": "Development database type",
+			"description": "Database type used by Umbraco for development.",
+			"type": "parameter",
+			"datatype": "choice",
+			"choices": [
+				{
+					"displayName": "None",
+					"description": "Do not configure a database for development.",
+					"choice": "None"
+				},
+				{
+					"displayName": "SQLite",
+					"description": "Use embedded SQLite database.",
+					"choice": "SQLite"
+				},
+				{
+					"displayName": "SQL Server Express LocalDB",
+					"description": "Use embedded LocalDB database (requires SQL Server Express with Advanced Services).",
+					"choice": "LocalDB"
+				}
+			],
+			"defaultValue": "None"
+		},
+		"DevelopmentConnectionString": {
+			"type": "generated",
+			"datatype": "string",
+			"generator": "switch",
+			"parameters": {
+				"cases": [
+					{
+						"condition": "(DevelopmentDatabaseType == 'SQLite')",
+						"value": "Data Source=|DataDirectory|/Umbraco.sqlite.db;Cache=Shared;Foreign Keys=True;Pooling=True"
+					},
+					{
+						"condition": "(DevelopmentDatabaseType == 'LocalDB')",
+						"value": "Data Source=(localdb)\\\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\\\Umbraco.mdf;Integrated Security=True"
+					}
+				]
+			},
+			"defaultValue": "",
+			"replaces": "Data Source=|DataDirectory|/Umbraco.sqlite.db;Cache=Shared;Foreign Keys=True;Pooling=True"
+		},
+		"DevelopmentConnectionStringProviderName": {
+			"type": "generated",
+			"datatype": "string",
+			"generator": "switch",
+			"parameters": {
+				"cases": [
+					{
+						"condition": "(DevelopmentDatabaseType == 'SQLite')",
+						"value": "Microsoft.Data.Sqlite"
+					},
+					{
+						"condition": "(true)",
+						"value": "Microsoft.Data.SqlClient"
+					}
+				]
+			},
+			"replaces": "Microsoft.Data.Sqlite"
+		},
+		"HasDevelopmentConnectionString": {
+			"type": "computed",
+			"value": "(DevelopmentConnectionString != '')"
+		},
+		"DevelopmentDeliveryApiKey": {
+			"type": "generated",
+			"generator": "guid",
+			"replaces": "11111111-1111-1111-1111-111111111111"
+		},
+		"UnattendedUserName": {
+			"displayName": "Unattended user name",
+			"description": "Used to specify the name of the default admin user when using unattended install on development (stored as plain text).",
+			"type": "parameter",
+			"datatype": "string",
+			"defaultValue": "",
+			"forms": {
+				"global": ["jsonEncode"]
+			},
+			"replaces": "Adm1n1strator"
+		},
+		"UnattendedUserEmail": {
+			"displayName": "Unattended user email",
+			"description": "Used to specify the email of the default admin user when using unattended install on development (stored as plain text).",
+			"type": "parameter",
+			"datatype": "string",
+			"defaultValue": "",
+			"forms": {
+				"global": ["jsonEncode"]
+			},
+			"replaces": "adm1n@fr1end1y.local"
+		},
+		"UnattendedUserPassword": {
+			"displayName": "Unattended user password",
+			"description": "Used to specify the password of the default admin user when using unattended install on development (stored as plain text).",
+			"type": "parameter",
+			"datatype": "string",
+			"defaultValue": "",
+			"forms": {
+				"global": ["jsonEncode"]
+			},
+			"replaces": "11111111111"
+		},
+		"UsingUnattenedInstall": {
+			"type": "computed",
+			"value": "(UnattendedUserName != '' && UnattendedUserEmail != '' && UnattendedUserPassword != '' && (HasDevelopmentConnectionString))"
+		},
+		"SkipRestore": {
+			"displayName": "Skip restore",
+			"description": "If specified, skips the automatic restore of the projects on create.",
+			"type": "parameter",
+			"datatype": "bool",
+			"defaultValue": "false"
+		}
+	}
+}

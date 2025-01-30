@@ -1,0 +1,27 @@
+{
+	"name": "fr1end1y-site",
+	"version": "0.1.0",
+	"type": "module",
+	"scripts": {
+		"build-site": "npx @11ty/eleventy",
+		"clean-site": "rimraf _site/ .cache/",
+		"dev-site": "npx @11ty/eleventy --serve",
+		"openapi-gen": "openapi-ts && tsc"
+	},
+	"devDependencies": {
+		"@11ty/eleventy": "^3.0.0",
+		"@11ty/eleventy-img": "^6.0.1",
+		"@hey-api/client-fetch": "^0.7.0",
+		"@hey-api/openapi-ts": "^0.62.2",
+		"dompurify": "^3.2.3",
+		"dotenv": "^16.4.7",
+		"html-minifier-terser": "^7.2.0",
+		"jsdom": "^26.0.0",
+		"posthtml": "^0.16.6",
+		"posthtml-insert-at": "^0.2.7",
+		"posthtml-match-helper": "^2.0.3",
+		"posthtml-urls": "^1.0.0",
+		"rimraf": "^6.0.1",
+		"typescript": "^5.7.3"
+	}
+}

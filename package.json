@@ -1,0 +1,25 @@
+{
+	"name": "fr1end1y",
+	"version": "0.1.0",
+	"type": "module",
+	"scripts": {
+		"build-cms": "cd ./src/ && npm run build-cms",
+		"build-site": "cd ./src/ && npm run build-site",
+		"build-gh-pages": "cd ./src/Fr1end1y.Site/ && npm run clean-site && npx @11ty/eleventy --output=../../docs/",
+		"clean-cms": "cd ./src/ && npm run clean-cms",
+		"clean-site": "cd ./src/ && npm run clean-site",
+		"clean": "cd ./src/ && npm run clean",
+		"dev-cms": "cd ./src/ && npm run dev-cms",
+		"dev-site": "cd ./src/ && npm run dev-site",
+		"dev": "cd ./src/ && npm run dev",
+		"openapi-gen": "cd ./src/ && npm run openapi-gen",
+		"postinstall": "cd ./src/ && npm install"
+	},
+	"devDependencies": {
+		"@eslint/js": "^9.18.0",
+		"eslint": "^9.18.0",
+		"eslint-config-prettier": "^10.0.1",
+		"globals": "^15.14.0",
+		"prettier": "3.4.2"
+	}
+}

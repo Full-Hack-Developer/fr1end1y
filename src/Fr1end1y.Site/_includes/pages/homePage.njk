@@ -1,0 +1,7 @@
+<div class="flow">
+	<h1>{{ currentPage.properties.headline }}</h1>
+
+	{% if currentPage.properties.mainContent.markup %}
+		{{ currentPage.properties.mainContent.markup | sanitize | richText | safe }}
+	{% endif %}
+</div>

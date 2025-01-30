@@ -1,0 +1,9 @@
+/**
+ * Flow composition (aka Stack layout)
+ * https://piccalil.li/quick-tip/flow-utility/
+ * https://every-layout.dev/layouts/stack/
+ */
+
+.flow > * + * {
+	margin-block-start: var(--flow-space, 1em);
+}

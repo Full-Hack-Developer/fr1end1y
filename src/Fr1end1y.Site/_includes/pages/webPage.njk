@@ -1,0 +1,21 @@
+<div class="flow prose">
+	<h1>{{ currentPage.properties.mainHeading or currentPage.name }}</h1>
+
+	{% if currentPage.properties.mainContent.markup %}
+		{% if currentPage.properties.showTableOfContents %}
+			{# Set default open/closed state based on `expandTableOfContents` from the CMS  #}
+			<details class="table-of-contents" {% if currentPage.properties.expandTableOfContents %}open{% endif %}>
+				<summary>Contents</summary>
+				{# ToC will be added here by the `tableOfContents` HTML transform #}
+			</details>
+		{% endif %}
+
+		{{ currentPage.properties.mainContent.markup | sanitize | richText | safe }}
+	{% endif %}
+
+	{% if currentPage.properties.showSubpageNavigation %}
+		{% set subpageNavigationDepth = currentPage.properties.subpageNavigationDepth or 1 %}
+		{% set subpageNavigationItems = currentPage.id | subpageNavigation(subpageNavigationDepth) %}
+		{% include "partials/subpage-navigation.njk" %}
+	{% endif %}
+</div>

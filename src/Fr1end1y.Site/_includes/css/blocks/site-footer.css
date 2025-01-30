@@ -1,0 +1,10 @@
+.site-footer {
+	--flow-space: var(--space-xs);
+
+	border-block-start: var(--stroke);
+	font-family: var(--font-decorative);
+	font-size: var(--step-0);
+	margin-block-start: var(--space-l);
+	padding-block-start: var(--space-xs);
+	padding-block-end: var(--space-xs);
+}

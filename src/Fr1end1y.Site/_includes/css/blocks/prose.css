@@ -1,0 +1,48 @@
+/**
+ * Prose pattern from Andy Bell's Complete CSS course
+ * https://piccalil.li/complete-css/
+ */
+
+.prose {
+	--flow-space: var(--space-l);
+}
+
+.prose :is(h1, h2, h3) {
+	hyphens: auto;
+	overflow-wrap: anywhere;
+}
+
+.prose :is(p, li, dl, figcaption, blockquote) {
+	max-width: 60ch;
+	text-wrap: pretty;
+}
+
+.prose :is(h1, h2, h3, h4) + *:not([class]) {
+	--flow-space: var(--space-m);
+}
+
+.prose :is(figure, table),
+.prose :is(figure, table) + * {
+	--flow-space: var(--space-2xl);
+}
+
+.prose * + :is(h1, h2, h3, h4):not([class]) {
+	--flow-space: var(--space-xl);
+}
+
+.prose :is(ul, ol):not([class]) li + li,
+.prose :is(ul, ol):not([class]) li > :is(ol, ul) {
+	--flow-space: var(--space-xs);
+}
+
+.prose hr {
+	--flow-space: var(--space-2xl);
+}
+
+.prose :is(img, video) {
+	border: var(--stroke-solid);
+}
+
+.prose p code {
+	word-wrap: break-word;
+}
