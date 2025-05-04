@@ -1,6 +1,5 @@
 {
 	"name": "fr1end1y",
-	"version": "0.4.0",
 	"type": "module",
 	"scripts": {
 		"build-cms": "cd ./src/ && npm run build-cms",
